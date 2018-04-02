@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.peyman.jani.weather.ShowWeatherActivity"
+    android:id="@+id/main_layout"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="vertical"
+        android:background="#2678ef61"
+        android:id="@+id/clock_layout"
+        >
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textColor="#65ffffff"
+            android:textSize="50px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/status_icon"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clock_layout"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:gravity="left|center_horizontal">
+
+        <ImageView
+         android:layout_weight="0.23"
+        android:id="@+id/main_status_image"
+        android:layout_width="0dp"
+        android:layout_height="90dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_status"
+            android:textColor="#85ffffff"
+            android:layout_gravity="center_vertical"
+            android:textSize="40sp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.17"></LinearLayout>
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/weekday_main"
+            android:textColor="#85ffffff"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/up_down"
+    android:layout_below="@+id/status_icon"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_marginLeft="40dp"
+        android:layout_width="8.5dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/down"
+        />
+
+    <TextView
+        android:id="@+id/down_temp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textColor="#85ffffff"
+        android:textSize="38px" />
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_width="3.5dp"
+        android:layout_height="3.5dp"
+        android:background="@mipmap/cicle"/>
+    <TextView
+        android:id="@+id/up_temp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35"
+        android:textColor="#85ffffff"
+        android:textSize="38px"/>
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_width="3.5dp"
+        android:layout_height="3.5dp"
+        android:background="@mipmap/cicle"/>
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_width="8.5dp"
+        android:layout_height="20dp"
+        android:background="@drawable/up"
+        android:layout_gravity="center_vertical"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/big_degree"
+        android:padding="9dp"
+        android:layout_below="@+id/up_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_horizontal">
+
+        <TextView
+            android:id="@+id/main_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="250px"
+            android:layout_marginLeft="45dp"
+            android:textColor="#95ffffff"/>
+        <ImageView
+            android:layout_marginTop="38dp"
+            android:layout_width="13.5dp"
+            android:layout_height="13.5dp"
+            android:background="@mipmap/cicle"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/forcast"
+        android:layout_below="@+id/big_degree"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#35ffffff"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
+        <LinearLayout
+            android:id="@+id/forcast_Title"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="38px"
+                android:text="آینده"
+                android:textColor="#85ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="0dp"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:background="#95ffffff"
+            android:layout_marginRight="0dp" />
+
+
+            <ListView
+                android:id="@+id/future_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
