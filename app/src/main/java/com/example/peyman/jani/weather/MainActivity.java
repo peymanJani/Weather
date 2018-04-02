@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         ConverterDate converterDate = new ConverterDate();
         converterDate.getCurrentShamsidate("Mon","29 Jan 2018");
-        Toast.makeText(this, GetDate.Year+"", Toast.LENGTH_LONG).show();
+
 
         editText = (AutoCompleteTextView) findViewById(R.id.search_editTxt);
         Button search = (Button)findViewById(R.id.search);

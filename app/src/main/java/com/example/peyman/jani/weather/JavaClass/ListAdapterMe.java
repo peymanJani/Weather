@@ -81,6 +81,9 @@ public class ListAdapterMe extends BaseAdapter {
             case "Rain":
                 status.setBackground(status.getResources().getDrawable(R.drawable.rain));
                 break;
+            case "Showers":
+                status.setBackground(status.getResources().getDrawable(R.drawable.rain));
+                break;
             case "Scattered Showers":
                 status.setBackground(status.getResources().getDrawable(R.drawable.scattered_showers));
                 break;
@@ -89,6 +92,9 @@ public class ListAdapterMe extends BaseAdapter {
                 break;
             case "Mostly Sunny":
                 status.setBackground(status.getResources().getDrawable(R.drawable.partly_cloudy));
+                break;
+            case "Scattered Thunderstorms":
+                status.setBackground(status.getResources().getDrawable(R.drawable.scattered_thunderstorms));
                 break;
 
         }
