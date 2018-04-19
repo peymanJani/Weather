@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -50,6 +51,7 @@ public class ShowWeatherActivity extends AppCompatActivity {
     TextView main_temp;
     TextView weekday_main;
     private TextView clock;
+    private Button btn_location;
 
 
     @Override
@@ -65,10 +67,6 @@ public class ShowWeatherActivity extends AppCompatActivity {
 
 
 
-//        Toast.makeText(ShowWeatherActivity.this, forecasts.get(0).getDate().toString()+"", Toast.LENGTH_SHORT).show();
-
-
-
 
     }
 
@@ -80,7 +78,12 @@ public class ShowWeatherActivity extends AppCompatActivity {
 
     private void initializeRest() {
 
-        String url=getUrlIntent();
+        String url;
+
+        //Intent intent=getIntent();
+        //url=intent.getStringExtra("city");
+        url=getUrlIntent();
+
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new TextHttpResponseHandler() {
             @Override
@@ -166,7 +169,7 @@ public class ShowWeatherActivity extends AppCompatActivity {
                         break;
                         default:
                             main_status.setText("افتابی");
-                            main_status_image.setBackground(main_status_image.getResources().getDrawable(R.drawable.sunny));
+                            main_status_image.setBackground(main_status_image.getResources().getDrawable(R.drawable.sunny_breezy_clear));
 
                 }
             }
@@ -177,10 +180,11 @@ public class ShowWeatherActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String u=intent.getStringExtra("city");
         String url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+u+"%2C%20ir%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        return url;
+        return u;
     }
 
     private void bind() {
+        btn_location = (Button)findViewById(R.id.btn_location);
         clock = (TextView)findViewById(R.id.clock);
         weekday_main = (TextView)findViewById(R.id.weekday_main);
         relativeLayout = (RelativeLayout)findViewById(R.id.main_layout);

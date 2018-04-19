@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photo"
+
     tools:context="com.example.peyman.jani.weather.MainActivity"
+    android:id="@+id/mainActivity"
     >
 
-<LinearLayout
-
+<ImageView
+    android:id="@+id/img"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="0.9"
+    android:background="@drawable/photo"
+
     />
     <AutoCompleteTextView
         android:id="@+id/search_editTxt"
@@ -25,15 +28,27 @@
         android:textSize="18sp"
         android:textColorHint="#fff"
         android:textColor="#fff"/>
+
     <Button
         android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:text="جستجو"
-        android:textColor="#fff"
-        android:layout_marginTop="18dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/search_editTxt"
-        android:background="#0fd2a6" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:background="#0fd2a6"
+        android:text="جستجو"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/search2"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_below="@id/search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:background="#0fd2a6"
+        android:text="جستجو"
+        android:textColor="#fff" />
 
 </RelativeLayout>

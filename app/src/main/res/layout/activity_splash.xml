@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background"
+    tools:context="com.example.peyman.jani.weather.SplashActivity"
+    android:id="@+id/aaa"
+    android:gravity="center_vertical">
+
+
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/sunny_breezy_clear"/>
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cloud"
+        android:src="@drawable/cloudy_mostly_cloudy"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+</RelativeLayout>

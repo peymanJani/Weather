@@ -12,24 +12,74 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="vertical"
-        android:background="#2678ef61"
+        android:background="#4678ef61"
         android:id="@+id/clock_layout"
         >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@drawable/add"/>
         <TextView
             android:id="@+id/clock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:textColor="#65ffffff"
+            android:textColor="#85ffffff"
             android:textSize="50px" />
     </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:layout_below="@+id/clock_layout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="vertical"
+        android:background="#2678ef61"
+        android:id="@+id/arrowLayout"
+        >
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/left_arrow"
+            />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/right"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            />
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_marginLeft="2dp"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/sity_text"
+            android:background="@drawable/location"/>
+        <TextView
+            android:id="@+id/sity_text"
+            android:layout_centerInParent="true"
+            android:text="کرج"
+            android:textColor="#85ffffff"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/status_icon"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/clock_layout"
+        android:layout_below="@id/arrowLayout"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:gravity="left|center_horizontal">
@@ -45,7 +95,7 @@
             android:layout_weight="0.3"
             android:layout_height="wrap_content"
             android:id="@+id/main_status"
-            android:textColor="#85ffffff"
+            android:textColor="#a5ffffff"
             android:layout_gravity="center_vertical"
             android:textSize="40sp" />
         <LinearLayout
@@ -58,7 +108,7 @@
             android:layout_weight="0.3"
             android:layout_height="wrap_content"
             android:id="@+id/weekday_main"
-            android:textColor="#85ffffff"
+            android:textColor="#a5ffffff"
             android:textSize="40sp" />
 
     </LinearLayout>
@@ -84,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25"
-        android:textColor="#85ffffff"
+        android:textColor="#a5ffffff"
         android:textSize="38px" />
     <ImageView
         android:layout_marginTop="5dp"
@@ -97,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="35"
-        android:textColor="#85ffffff"
+        android:textColor="#a5ffffff"
         android:textSize="38px"/>
     <ImageView
         android:layout_marginTop="5dp"
@@ -126,7 +176,7 @@
             android:layout_height="wrap_content"
             android:textSize="250px"
             android:layout_marginLeft="45dp"
-            android:textColor="#95ffffff"/>
+            android:textColor="#a5ffffff"/>
         <ImageView
             android:layout_marginTop="38dp"
             android:layout_width="13.5dp"
@@ -159,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="38px"
                 android:text="آینده"
-                android:textColor="#85ffffff"/>
+                android:textColor="#a5ffffff"/>
         </LinearLayout>
 
         <LinearLayout
