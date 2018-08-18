@@ -13,9 +13,66 @@
     android:layout_height="match_parent"
     tools:context="com.example.peyman.jani.weather.MapsActivity" />
     <ImageView
-        android:layout_width="35dp"
+        android:id="@+id/image_lable_map"
+        android:layout_width="32dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:background="@drawable/location"/>
+
+    <LinearLayout
+        android:id="@+id/show_mini_fragment"
+        android:layout_width="150dp"
+        android:layout_height="127dp"
+        android:layout_below="@+id/image_lable_map"
+        android:layout_centerHorizontal="true"
+        android:background="#bd6becd3"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:layout_marginTop="0dp"
+                android:id="@+id/Image_status"
+                android:layout_height="50dp"
+                android:layout_width="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:id="@+id/temp_mini"
+                android:text="8"
+                android:layout_gravity="right"
+                android:textSize="40sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+            <ImageView
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:background="@drawable/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:gravity="center">
+            <TextView
+                android:gravity="center"
+                android:text="آفتابی"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textStatus"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
 </RelativeLayout>
 

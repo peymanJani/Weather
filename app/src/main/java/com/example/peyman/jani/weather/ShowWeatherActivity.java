@@ -1,11 +1,18 @@
 package com.example.peyman.jani.weather;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.QuickContactBadge;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +60,8 @@ public class ShowWeatherActivity extends AppCompatActivity {
     TextView weekday_main;
     private TextView clock;
     private Button btn_location;
-
+    private TextView sity_text;
+    public Context mContext=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +73,17 @@ public class ShowWeatherActivity extends AppCompatActivity {
         initializeRest();
         //String[] name={"شنبه","یکشنبه","دوشنبه","سه شنبه","چهارشنبه","پنجشنبه","جمعه",};
         listView = (ListView)findViewById(R.id.future_list);
+        btn_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m =getIntent();
+                Intent intent = new Intent(ShowWeatherActivity.this,MapsActivity2.class);
+
+                String city =PreferenceManager.getDefaultSharedPreferences(mContext).getString("city","tehran");
+                intent.putExtra("city","Tehran");
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -80,11 +100,9 @@ public class ShowWeatherActivity extends AppCompatActivity {
 
         String url;
 
-        //Intent intent=getIntent();
-        //url=intent.getStringExtra("city");
         url=getUrlIntent();
 
-        AsyncHttpClient client = new AsyncHttpClient();
+        final AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -114,14 +132,15 @@ public class ShowWeatherActivity extends AppCompatActivity {
                  main_temp.setText(convetDegree(jason.getQuery().getResults().getChannel().getItem().getCondition().getTemp())+"");
 
 
-
-
                 ListAdapterMe listAdapter = new ListAdapterMe(ShowWeatherActivity.this,forecasts);
                 listView.setAdapter(listAdapter);
                 //Toast.makeText(ShowWeatherActivity.this, forecasts.get(0).getDate().toString()+"", Toast.LENGTH_SHORT).show();
 
+                CheckPermition();
+                PreferenceManager.getDefaultSharedPreferences(ShowWeatherActivity.this).edit().putString("a",responseString);
+                PreferenceManager.getDefaultSharedPreferences(ShowWeatherActivity.this).edit().putString("city",jason.getQuery().getResults().getChannel().getLocation().getCity().toString());
 
-                //Toast.makeText(ShowWeatherActivity.this, m.get(2).getDate().toString()+"", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ShowWeatherActivity.this, m.get(2).getDate().toString()+"", Toast.LENGTH_SHORT).show();
             }
 
             private void set_status_main(String text) {
@@ -176,11 +195,22 @@ public class ShowWeatherActivity extends AppCompatActivity {
         });
     }
 
+    private void CheckPermition() {
+        if (ContextCompat.checkSelfPermission(mContext,
+                Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+    ActivityCompat.requestPermissions(ShowWeatherActivity.this,
+                    new String[]{Manifest.permission.READ_PHONE_STATE},
+            1500);
+        }
+
+    }
+
     private String getUrlIntent() {
         Intent intent = getIntent();
         String u=intent.getStringExtra("city");
         String url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+u+"%2C%20ir%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        return u;
+        return url;
     }
 
     private void bind() {
@@ -193,6 +223,9 @@ public class ShowWeatherActivity extends AppCompatActivity {
         low = (TextView)findViewById(R.id.down_temp);
         high = (TextView)findViewById(R.id.up_temp);
         main_temp = (TextView)findViewById(R.id.main_temp);
+        sity_text = (TextView)findViewById(R.id.sity_text);
+        Intent intent=getIntent();
+        sity_text.setText(intent.getStringExtra("city"));
     }
 
 

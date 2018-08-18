@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Transition;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.peyman.jani.weather.JavaClass.ConverterDate;
+import com.example.peyman.jani.weather.JavaClass.DataBase;
 import com.example.peyman.jani.weather.JavaClass.GetDate;
 import com.example.peyman.jani.weather.JavaClass.GetRequestWebService;
 import com.example.peyman.jani.weather.JavaClass.HelperCalendar;
@@ -50,14 +52,18 @@ public class MainActivity extends AppCompatActivity {
     };
     String Mainresponse;
     RequestParams requestParams = new RequestParams();
+    private String s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataBase dataBase=new DataBase(this,"City",null,1);
+        Fragment fragment = new Fragment();
         editText = (AutoCompleteTextView) findViewById(R.id.search_editTxt);
         Button search = (Button)findViewById(R.id.search);
-        Button search2 = (Button)findViewById(R.id.search2);
+
 
 
         YoYo.with(Techniques.SlideInLeft
@@ -72,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s=editText.getText().toString();
+                s=editText.getText().toString();
                 String url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+s+"%2C%20ir%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
                 if (v.getId()==R.id.search){
                     if(s.length()!=0){
@@ -82,10 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     else {
                         Toast.makeText(MainActivity.this, "لطفا نام را بدرستی وارد کنید!", Toast.LENGTH_SHORT).show();
                     }
-
-                }
-                if (v.getId()==R.id.search2){
-
 
                 }
 
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "لطفا نام را به درستی وارد کنید", Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent = new Intent(MainActivity.this,ShowWeatherActivity.class);
-                    intent.putExtra("city",url);
+                    intent.putExtra("city",s);
                     startActivity(intent);
                 }
             }

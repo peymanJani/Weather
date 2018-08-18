@@ -15,11 +15,7 @@
         android:background="#4678ef61"
         android:id="@+id/clock_layout"
         >
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:background="@drawable/add"/>
+
         <TextView
             android:id="@+id/clock"
             android:layout_width="wrap_content"
